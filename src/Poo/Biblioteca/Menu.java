@@ -1,27 +1,29 @@
 package Poo.Biblioteca;
 
+import java.util.Comparator;
 import java.util.Scanner;
 
-public class Menu {
-    public static void main(String[] args) throws LibroEliminadoException, ErrorModificarLibroException {
+public class Menu implements Comparator<Libro> {
+    public static void main(String[] args) throws LibroEliminadoException, ErrorModificarLibroException{
         Scanner scanner = new Scanner(System.in);
 
         Biblioteca biblioteca = new Biblioteca();
         Autor autor = new Autor();
 
-        Autor ejemplo1 = new Autor("Juan Ruiz", 39);
-        Autor ejemplo2 = new Autor("Alicia Montes", 32);
+        Autor autor18 = new Autor("Antonio Perez",  37);
+        Autor autor28 = new Autor("Benito Gonzalez", 40);
+        autor.añadirAutor(autor18);
+        autor.añadirAutor(autor28);
 
-        autor.añadirAutor(ejemplo1);
-        autor.añadirAutor(ejemplo2);
+        Libro libro1= new Libro(autor18, "Cenicienta", "ISBN123");
+        Libro libro2= new Libro(autor28, "La cabaña", "ISBN456");
+        Libro libro3= new Libro(autor28, "Plancanieves", "ISBN789");
+        Libro libro4= new Libro(autor18, "Ienicienta", "ISBN974");
 
-        Libro ejemploLibro3 = new Libro(ejemplo2, "Ralefica", "ISBN937");
-        Libro ejemploLibro1 = new Libro(ejemplo1, "La cenicienta", "ISBN123");
-        Libro ejemploLibro2 = new Libro(ejemplo2, "Malefica", "ISBN456");
-
-        biblioteca.insertar(ejemploLibro3);
-        biblioteca.insertar(ejemploLibro1);
-        biblioteca.insertar(ejemploLibro2);
+        biblioteca.getLibros().add(libro1);
+        biblioteca.getLibros().add(libro2);
+        biblioteca.getLibros().add(libro3);
+        biblioteca.getLibros().add(libro4);
 
         boolean salir = false;
 
@@ -212,17 +214,36 @@ public class Menu {
                 }
 
                 case 6 -> {
+                    System.out.println("Autores registrados: ");
+                    for (Autor autor1 : autor.getAutores()) {
+                        System.out.println(autor1);
+                    }
+
+                    System.out.println("\nIngrese los datos del nuevo autor...");
                     System.out.print("Nombre del autor: ");
                     String nombre = scanner.nextLine();
                     System.out.print("Edad del autor: ");
                     int edad = scanner.nextInt();
                     scanner.nextLine();
 
-                    Autor nuevoAutor = new Autor(nombre, edad);
-                    autor.añadirAutor(nuevoAutor);
+                    boolean autorExiste = false;
 
-                    System.out.println("Autor añadido correctamente.");
+                    for (Autor autor1 : autor.getAutores()) {
+                        if (autor1.getNombre().equals(nombre) && autor1.getEdad() == edad) {
+                            autorExiste = true;
+                            break;
+                        }
+                    }
+
+                    if (autorExiste) {
+                        System.out.println("El autor ya existe en la base de datos.");
+                    } else {
+                        Autor nuevoAutor = new Autor(nombre, edad);
+                        autor.añadirAutor(nuevoAutor);
+                        System.out.println("Autor añadido correctamente.");
+                    }
                 }
+
 
                 case 7 -> {
                     if (autor.getAutores().isEmpty()) {
@@ -248,5 +269,10 @@ public class Menu {
         }
 
         scanner.close();
+    }
+
+    @Override
+    public int compare(Libro o1, Libro o2) {
+        return 0;
     }
 }

@@ -14,7 +14,7 @@ public class Main implements Comparator<Libro>{
 
         Libro libro1= new Libro(autor1, "Cenicienta", "ISBN123");
         Libro libro2= new Libro(autor2, "La cabaña", "ISBN456");
-        Libro libro3= new Libro(autor1, "Plancanieves", "ISBN789");
+        Libro libro3= new Libro(autor2, "Plancanieves", "ISBN789");
         Libro libro4= new Libro(autor1, "Ienicienta", "ISBN974");
 
         biblioteca.getLibros().add(libro1);

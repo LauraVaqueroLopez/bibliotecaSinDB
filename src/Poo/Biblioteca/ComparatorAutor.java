@@ -6,6 +6,6 @@ public class ComparatorAutor implements Comparator<Libro> {
 
     @Override
     public int compare(Libro o1, Libro o2) {
-        return o1.getAutorLibro().getNombre().compareTo(o1.getAutorLibro().getNombre());
+        return o1.getAutorLibro().getNombre().compareTo(o2.getAutorLibro().getNombre());
     }
 }
