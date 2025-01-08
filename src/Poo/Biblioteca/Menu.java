@@ -153,7 +153,6 @@ public class Menu implements Comparator<Libro> {
 
                     Libro libro = new Libro(autorIngresar, nombreLibro, isbn);
                     biblioteca.insertar(libro);
-
                 }
 
                 case 4 -> {
