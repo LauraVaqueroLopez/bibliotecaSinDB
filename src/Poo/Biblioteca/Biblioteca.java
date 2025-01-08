@@ -44,19 +44,19 @@ public class Biblioteca {
     public void modificar(Autor autor, String nombreLibro, String isbn) throws ErrorModificarLibroException{
         Libro Libro = null;
 
-        for (Libro libroActual : libros){
-            if (libroActual.getIsbn().equals(isbn)){
+        for (Libro libroActual : libros) {
+            if (libroActual.getIsbn().equals(isbn)) {
                 System.out.println("Libro a modificar: " + libroActual.getNombreLibro());
                 Libro = libroActual;
-            }else if (Libro == null) {
-                throw new ErrorModificarLibroException();
-                }else{
-                    libroActual.setAutorLibro(autor);
-                    libroActual.setNombreLibro(nombreLibro);
-                    libroActual.setIsbn(isbn);
-                    System.out.println(libroActual);
-                    System.out.println("Actualizado con éxito.");
-                }
+                libroActual.setAutorLibro(autor);
+                libroActual.setNombreLibro(nombreLibro);
+                libroActual.setIsbn(isbn);
+                System.out.println(libroActual);
+                System.out.println("Actualizado con éxito.");
+            }
+        }
+        if (Libro == null) {
+            throw new ErrorModificarLibroException();
         }
     }
 
@@ -67,15 +67,11 @@ public class Biblioteca {
             if (libroActual.getIsbn().equals(isbn)){
                 System.out.println("Libro eliminado: " + libroActual.getNombreLibro());
                 libro = libroActual;
-            }
-
-            if (libro == null) {
-                throw new LibroEliminadoException();
-            }else {
-
                 libros.remove(libroActual);
-
             }
+        }
+        if (libro == null) {
+            throw new LibroEliminadoException();
         }
     }
 

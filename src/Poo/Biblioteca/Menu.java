@@ -109,7 +109,6 @@ public class Menu implements Comparator<Libro> {
                             }
                         }
                     }
-
                 }
 
                 case 2 -> {
@@ -167,7 +166,6 @@ public class Menu implements Comparator<Libro> {
                     String isbn = scanner.nextLine();
 
                     biblioteca.eliminar(isbn);
-
                 }
 
                 case 5 -> {
@@ -209,8 +207,6 @@ public class Menu implements Comparator<Libro> {
                     String nombreLibro = scanner.nextLine();
 
                     biblioteca.modificar(autorIngresar, nombreLibro, isbn);
-
-
                 }
 
                 case 6 -> {
@@ -244,7 +240,6 @@ public class Menu implements Comparator<Libro> {
                     }
                 }
 
-
                 case 7 -> {
                     if (autor.getAutores().isEmpty()) {
                         System.out.println("No hay autores disponibles para eliminar.");
@@ -254,7 +249,6 @@ public class Menu implements Comparator<Libro> {
                     String nombre = scanner.nextLine();
 
                     autor.eliminarAutor(nombre);
-                    System.out.println("Autor eliminado correctamente.");
                 }
 
                 case 8 -> {
