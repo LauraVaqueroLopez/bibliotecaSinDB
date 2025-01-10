@@ -15,6 +15,7 @@ public class Menu implements Comparator<Libro> {
         autor.añadirAutor(autor18);
         autor.añadirAutor(autor28);
 
+
         Libro libro1= new Libro(autor18, "Cenicienta", "ISBN123");
         Libro libro2= new Libro(autor28, "La cabaña", "ISBN456");
         Libro libro3= new Libro(autor28, "Plancanieves", "ISBN789");
